@@ -1,73 +1,107 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useHistory, withRouter } from "react-router-dom";
+import {axiosWithAuth} from '/Users/nickohman/Desktop/front-end/front-end/src/utils/axiosWithAuth.js'
+import { connect } from "react-redux";
+import {registerAction} from '/Users/nickohman/Desktop/front-end/front-end/src/actions/registerAction.js'
+import axios from "axios"
 
 import './register.css';
 
 //State
 
 let Register = props => {
+  const { push } = useHistory();
 
-    let [formState, setFormState] = useState({
 
-        email: '',
-        password: ''
-    
+  let [formState, setFormState] = useState({
+
+    username: '',
+    password: ''
+
+  });
+
+  //Functions
+
+  let formChange = event => {
+
+    setFormState({
+
+      ...formState,
+      [event.target.id]: event.target.value
+
+    })
+
+    console.log(formState);
+
+  }
+
+  let submitForm = event => {
+
+    event.preventDefault()
+    axiosWithAuth()
+      .post("auth/register", formState)
+      .then((res) => {
+        localStorage.setItem("token", (res.data.token));
+        localStorage.setItem("userID", res.data.user.id);
+
+        console.log({ res });
+        props.registerAction(res);
+        push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("There was an error. Please try again.")
+        
       });
+  };
 
-      //Functions
 
-      let formChange = event => {
 
-        setFormState({
+return (
 
-            ...formState,
-            [event.target.id]: event.target.value
+  <div id='register-form'>
 
-        })
+    <h2>Register an account</h2>
 
-        console.log(formState);
+    <form onSubmit={event => submitForm(event)}>
 
-      }
+      <label htmlFor='email'>Email</label>
 
-      let submitForm = event => {
+      <input
+        type='text'
+        name='username'
+        id='username'
+        onChange={event => formChange(event)}
+        value={formState.email} />
 
-        event.preventDefault()
 
-      }
+      <label htmlFor='password'>Password</label>
 
-    return (
+      <input
+        type='text'
+        id='password'
+        onChange={event => formChange(event)}
+        value={formState.password} />
 
-        <div id='register-form'>
+      <button>Login</button>
 
-            <h2>Register an account</h2>
+    </form>
 
-            <form onSubmit={event => submitForm(event)}>
+  </div>
 
-                <label htmlFor='email'>Email</label>
-
-                <input 
-                type='text' 
-                id='email' 
-                onChange={event => formChange(event)}
-                value={formState.email}/>
-                
-
-                <label htmlFor='password'>Password</label>
-
-                <input 
-                type='text' 
-                id='password' 
-                onChange={event => formChange(event)}
-                value={formState.password}/>
-                    
-                <button>Login</button>
-
-            </form>
-
-        </div>
-
-    )
+)
 
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+  console.log(state.user);
+  return {
+    username: state.user.username,
+   
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, { registerAction })(Register)
+);
