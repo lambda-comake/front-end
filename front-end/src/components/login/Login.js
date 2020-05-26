@@ -11,24 +11,23 @@ let Login = props => {
 
     let [formState, setFormState] = useState({
 
-        email: '',
+        username: '',
         password: ''
     
     });
 
     const [inputErrors, setInputErrors] = useState({ //State for form input validation errors
 
-        email: "",
+        username: "",
         password: ""
 
     });
 
     const formSchema = yup.object().shape({
 
-        email: yup
+        username: yup
             .string()
-            .email("- Must be a valid email address.")
-            .required("- Must include email address."),
+            .required("- Must include a username."),
         password: yup
             .string()
             .min(6, "- Passwords must be at least 6 characters long.")
@@ -91,10 +90,9 @@ let Login = props => {
 
     const formSchema = yup.object().shape({
 
-        email: yup
+        username: yup
             .string()
-            .email("- Must be a valid email address.")
-            .required("- Must include email address."),
+            .required("- Must include a username."),
         password: yup
             .string()
             .min(6, "- Passwords must be at least 6 characters long.")
@@ -120,13 +118,13 @@ let Login = props => {
 
             <form onSubmit={event => submitForm(event)}>
 
-                <label htmlFor='email'>Email {inputErrors.email}</label>
+                <label htmlFor='username'>Username {inputErrors.username}</label>
 
                 <input 
                 type='text' 
-                id='email' 
+                id='username' 
                 onChange={event => formChange(event)}
-                value={formState.email}/>
+                value={formState.username}/>
                 
 
                 <label htmlFor='password'>Password {inputErrors.password}</label>
