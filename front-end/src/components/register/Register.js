@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory, withRouter } from "react-router-dom";
-import {axiosWithAuth} from '/Users/nickohman/Desktop/front-end/front-end/src/utils/axiosWithAuth.js'
+import {axiosWithAuth} from '../../utils/axiosWithAuth'
 import { connect } from "react-redux";
-import {registerAction} from '/Users/nickohman/Desktop/front-end/front-end/src/actions/registerAction.js'
+import {registerAction} from '../../actions/registerAction'
 import axios from "axios"
 
 import './register.css';

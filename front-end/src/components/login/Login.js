@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory, withRouter } from "react-router-dom";
-import { loginAction } from "/Users/nickohman/Desktop/front-end/front-end/src/actions/loginAction.js"
-import {axiosWithAuth} from "/Users/nickohman/Desktop/front-end/front-end/src/utils/axiosWithAuth.js"
+import { loginAction } from "../../actions/loginAction"
+import {axiosWithAuth} from "../../utils/axiosWithAuth"
 import { connect } from "react-redux";
 
 import './login.css'
