@@ -1,43 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 
 import './login.css'
 
-class Login extends React.Component {
+//State
 
-    render() {
+let Login = props => {
 
-        return (
+    let [formState, setFormState] = useState({
 
-            <div id='login-form'>
+        email: '',
+        password: ''
+    
+      });
 
-                <h2>Member Login</h2>
+      //Functions
 
-                <form>
+      let formChange = event => {
 
-                    <label htmlFor='username'>Username</label>
+        setFormState({
 
-                    <input 
-                    type='text' 
-                    id='username' />
+            ...formState,
+            [event.target.id]: event.target.value
 
-                    <label htmlFor='password'>Password</label>
+        })
 
-                    <input 
-                    type='text' 
-                    id='password' />
-                        
-                    <button>Login</button>
+        console.log(formState);
 
-                </form>
+      }
 
-                <Link to='register'>Need an account?</Link>
+      let submitForm = event => {
 
-            </div>
+        event.preventDefault()
 
-        )
+      }
 
-    }
+    return (
+
+        <div id='login-form'>
+
+            <h2>Member Login</h2>
+
+            <form onSubmit={event => submitForm(event)}>
+
+                <label htmlFor='email'>Email</label>
+
+                <input 
+                type='text' 
+                id='email' 
+                onChange={event => formChange(event)}
+                value={formState.email}/>
+                
+
+                <label htmlFor='password'>Password</label>
+
+                <input 
+                type='text' 
+                id='password' 
+                onChange={event => formChange(event)}
+                value={formState.password}/>
+                    
+                <button>Login</button>
+
+            </form>
+
+            <Link to='register'>Need an account?</Link>
+
+        </div>
+
+    )
 
 }
 
