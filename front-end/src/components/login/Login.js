@@ -132,7 +132,7 @@ let Login = props => {
                 <label htmlFor='password'>Password {inputErrors.password}</label>
 
                 <input 
-                type='text' 
+                type='password' 
                 id='password' 
                 onChange={event => formChange(event)}
                 value={formState.password}/>
