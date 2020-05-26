@@ -3,6 +3,7 @@ import {BrowserRouter, Link, Route} from 'react-router-dom';
 
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import CreateProfile from './components/createprofile/CreateProfile';
 
 import './App.css';
 
