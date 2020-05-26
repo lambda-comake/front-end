@@ -6,7 +6,7 @@ body {
 
 }
 
-#login-form {
+#form-container {
 
 
     width: 300px;
@@ -63,9 +63,16 @@ button {
 
 }
 
+button:disabled {
+
+    color: black;
+
+}
+
 a {
 
     display: block;
     color: black;
 
 }
+
