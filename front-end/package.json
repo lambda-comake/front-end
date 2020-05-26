@@ -9,7 +9,11 @@
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-redux": "^7.2.0",
+=======
+    "react-router": "^5.2.0",
+>>>>>>> a46bc04fd4c2fd13663dc1ce16b8ffcd6e173494
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
