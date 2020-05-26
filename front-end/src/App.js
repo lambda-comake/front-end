@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
 
-import Login from './components/login/Login'
+import Login from './components/login/Login';
+import Register from './components/register/Register';
 
 import './App.css';
 
@@ -15,6 +16,12 @@ function App() {
         <Route path='/login'> 
 
           <Login />
+
+        </Route>
+
+        <Route path='/register'>
+
+          <Register />
 
         </Route>
 

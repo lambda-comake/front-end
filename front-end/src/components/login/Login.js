@@ -64,7 +64,7 @@ let Login = props => {
 
             </form>
 
-            <Link to='register'>Need an account?</Link>
+            <Link to='/register'>Need an account?</Link>
 
         </div>
 
