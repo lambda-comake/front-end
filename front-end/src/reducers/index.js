@@ -1,11 +1,9 @@
-import { combineReducers } from "redux"
+ 
+import { combineReducers } from 'redux';
 
-import issueReducer from "./issueReducer"
-import userReducer from "./userReducer"
+import { userReducer as user } from "./userReducer";
+import { issueReducer as issues } from "./issueReducer";
+import { editIssueReducer as editIssue } from "./editIssueReducer";
 
-const rootReducer = combineReducers({
-    issueReducer,
-    userReducer
-})
 
-export default rootReducer;
+export default combineReducers({user, issues, editIssue});
