@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
-import * as yup from 'yup';
 
-import './register.css'
+import * as yup from 'yup';
+import axios from 'axios';
+
+import './register.css';
 
 let Register = props => {
 
@@ -81,6 +83,21 @@ let Register = props => {
     let submitForm = event => {
 
     event.preventDefault()
+
+        axios.post('https://co-make-buildweek.herokuapp.com/auth/register', { 
+
+        ...formState
+
+        }).then(response => {
+
+            console.log(response);
+
+        }).catch(error => {
+
+            console.log(error);
+
+        });
+
 
     }
 

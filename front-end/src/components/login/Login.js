@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
+
 import * as yup from 'yup';
+import axios from 'axios';
 
 import './login.css'
 
@@ -82,7 +84,23 @@ let Login = props => {
 
     event.preventDefault()
 
+    axios.post('https://co-make-buildweek.herokuapp.com/auth/login', { 
+
+        ...formState
+
+        }).then(response => {
+
+            console.log(response);
+
+        }).catch(error => {
+
+            console.log(error);
+
+        });
+
+
     }
+
 
     useEffect(() => {
 
