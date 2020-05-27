@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { useHistory, withRouter } from "react-router-dom";
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
 import { connect } from "react-redux";
-import {registerAction} from '../../actions/registerAction'
-import axios from "axios"
+import {registerAction} from '../../actions/registerAction';
+
 
 
 import * as yup from 'yup';
@@ -96,8 +96,7 @@ let Register = props => {
       .post("auth/register", formState)
       .then((res) => {
         localStorage.setItem("token", (res.data.token));
-        //localStorage.setItem("userID", res.data.user.id);
-
+        // localStorage.setItem("id", res.data.user.id);
         console.log({ res });
         props.registerAction(res);
         push("/");

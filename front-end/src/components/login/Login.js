@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, withRouter, Link } from "react-router-dom";
-import { loginAction } from "../../actions/loginAction"
-import { axiosWithAuth } from "../../utils/axiosWithAuth"
+import { loginAction } from "../../actions/loginAction";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { connect } from "react-redux";
 
 import * as yup from 'yup';
-import axios from 'axios'; 
+
 
 import './login.css';
 
@@ -91,7 +91,7 @@ let Login = props => {
       .post("/auth/login", formState)
       .then((res) => {
         localStorage.setItem("token", (res.data.token));
-        //localStorage.setItem("id", res.data.user.id);
+        // localStorage.setItem("id", res.data.user.id);
         console.log({ res });
         props.loginAction(res);
         push("/");
