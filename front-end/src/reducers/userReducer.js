@@ -20,19 +20,26 @@ import{LOGIN_USER_START,
     LOGIN_USER_FAIL,
 } from "../actions/loginAction"
 
+import {
+    CREATE_PROFILE_START,
+    CREATE_PROFILE_SUCCESS,
+    CREATE_PROFILE_FAIL,
+} from "../actions/profileAction"
+import { bindActionCreators } from "redux";
+
 
 export const initialState = {
     username: "",
-    first_name: "",
-    last_name: "",
-    zip_code: "",
-    bio: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    age: "",
     id: "",
     isFetching: false,
     error: "",
     myIssues: [], 
 }
-
+console.log('reducer!!!!!!', initialState.email)
 export const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_USER_START:
@@ -46,12 +53,11 @@ export const userReducer = (state = initialState, action) => {
             // console.log(action.payload.token)
             return {
                 ...state,
+                // email: action.user.email,
                 username: action.user.username,
-                first_name: action.user.first_name,
-                last_name: action.user.last_name,
-                zip_code: action.user.zip_code,
-                bio: action.user.bio,
-                id: action.user.id,
+                // first_name: action.user.first_name,
+                // last_name: action.user.last_name,
+                id: action.user_id,
                 isFetching: false,
             };
         case LOGIN_USER_FAIL:
@@ -121,6 +127,15 @@ export const userReducer = (state = initialState, action) => {
                 isFetching: false,
                 error: action.payload
             };
+            case CREATE_PROFILE_SUCCESS:
+                return{                  
+                    ...state,
+                    email: action.payload[0].email,
+                    firstName: action.payload[0].firstName,
+                    lastName: action.payload[0].lastName,
+                    age: action.payload[0].age,
+                    user_id: action.payload[0].user_id
+                }
         default:
             return state;
     }

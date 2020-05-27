@@ -90,9 +90,10 @@ let Login = props => {
     axiosWithAuth()
       .post("/auth/login", formState)
       .then((res) => {
+        console.log(res.data)
         localStorage.setItem("token", (res.data.token));
-        // localStorage.setItem("id", res.data.user.id);
-        console.log({ res });
+        localStorage.setItem("user_id", (res.data.user_id));
+        console.log('!!!!!!!!!!!!!!',{ res });
         props.loginAction(res);
         push("/");
       })
@@ -113,7 +114,7 @@ let Login = props => {
             .required("- Must include a username."),
         password: yup
             .string()
-            .min(6, "- Passwords must be at least 6 characters long.")
+            .min(2, "- Passwords must be at least 6 characters long.")
             .required(" -Password is Required"),
       });
 

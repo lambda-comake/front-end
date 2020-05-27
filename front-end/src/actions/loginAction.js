@@ -8,8 +8,10 @@ export const loginAction = res => {
         dispatch({ type: LOGIN_USER_START })
         dispatch({
             type: LOGIN_USER_SUCCESS,
-            token: res.data.token,
-            user: res.data.user,
+            payload: {
+                token: res.data.token,
+                user_id: res.data.user_id
+            }
         })
         dispatch({
                 type: LOGIN_USER_FAIL,

@@ -9,8 +9,7 @@ import {
 
 export const initialState = {
 
-    isFetching: false,
-    error: "",
+   
     issue: {
         description: "",
         id: "",
@@ -32,7 +31,7 @@ export const editIssueReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                error: action.payload,
+                
             };
         case EDIT_ISSUES_SUCCESS:
             return {
