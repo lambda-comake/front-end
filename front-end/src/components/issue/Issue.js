@@ -2,6 +2,7 @@ import React from 'react';
 
 import Upvote from '../upvote/Upvote';
 import Comment from '../comment/Comment';
+import AddComment from '../addcomment/AddComment';
 
 import './issue.css'
 
@@ -20,6 +21,7 @@ return (
         <Comment />
         <Comment />
         <Comment />
+        <AddComment />
 
     </div>
 

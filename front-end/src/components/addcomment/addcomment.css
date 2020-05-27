@@ -1,0 +1,19 @@
+
+.addcomment {
+
+    border-top: 1px solid black;
+    margin: 10px;
+    padding-top: 10px;
+
+}
+
+#feed > .issue > form > input {
+
+    width: 90%;
+    height: 30px;
+    border: 0px;
+
+    outline: none;
+
+}
+

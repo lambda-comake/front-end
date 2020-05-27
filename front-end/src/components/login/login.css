@@ -34,7 +34,7 @@ label {
 
 }
 
-input {
+#form-container > form > input {
 
     width: 100%;
     height: 30px;
