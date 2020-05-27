@@ -15,8 +15,7 @@ export const initialState = {
         id: "",
         short_description: "",
         upvotes: "",
-        user_id: "",
-        zip_code: "",
+        
     },
 }
 
@@ -41,8 +40,7 @@ export const editIssueReducer = (state = initialState, action) => {
                     id: "",
                     short_description: "",
                     upvotes: "",
-                    user_id: "",
-                    zip_code: "",
+                    
                 },
                 isFetching: false,
                 error: "",

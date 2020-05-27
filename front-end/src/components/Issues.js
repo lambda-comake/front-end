@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import {useHistory} from 'react-router-dom'
 
 const Issues = props => {
     const [allIssues, setAllIssues] = useState([]);
+
+    const {push} = useHistory();
 
     useEffect(() => {
         axiosWithAuth()
@@ -25,7 +28,9 @@ const Issues = props => {
                     <div key={issue.id}>
                 <p>{issue.title}</p>
                 <p>{issue.description}</p>
+                <button onClick={() => push(`/editIssues/${issue.id}`)}>Edit Issue</button>
                 </div>
+                
                 )
             })}
             
