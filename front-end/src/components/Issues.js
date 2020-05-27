@@ -6,6 +6,7 @@ const Issues = props => {
     const [allIssues, setAllIssues] = useState([]);
 
     const {push} = useHistory();
+    const history = useHistory()
 
     useEffect(() => {
         axiosWithAuth()
@@ -18,6 +19,19 @@ const Issues = props => {
             });
     }, [])
 
+    const deleteIssue = id => {
+        axiosWithAuth()
+        .delete(`api/issues/${id}`)
+        .then( res => {
+         console.log('issue deleted') 
+         history.go(0)  
+        })
+        .catch(err => {
+            console.log('errr')
+        })
+
+
+    }
 
 
     return (
@@ -29,6 +43,7 @@ const Issues = props => {
                 <p>{issue.title}</p>
                 <p>{issue.description}</p>
                 <button onClick={() => push(`/editIssues/${issue.id}`)}>Edit Issue</button>
+                <button onClick={() => deleteIssue(issue.id)}>Delete Issue</button>
                 </div>
                 
                 )
