@@ -6,7 +6,11 @@ let Upvote = props => {
 
 return (
 
-    null
+    <div className='upvote'>
+
+        <button>Upvote</button>
+
+    </div>
 
 )
 
