@@ -97,7 +97,6 @@ let Register = props => {
       .then((res) => {
         localStorage.setItem("token", (res.data.token));
         // localStorage.setItem("id", res.data.user.id);
-
         console.log({ res });
         props.registerAction(res);
         push("/");
