@@ -1,17 +1,24 @@
 import {
-    LOGIN_USER_START,
-    LOGIN_USER_SUCCESS,
-    LOGIN_USER_FAIL,
-    REGISTER_USER_START,
-    REGISTER_USER_SUCCESS,
-    REGISTER_USER_FAIL,
     GET_PROFILE_SUCCESS,
     GET_PROFILE_START,
     GET_PROFILE_FAIL,
     UPDATE_PROFILE_START,
     UPDATE_PROFILE_SUCCESS,
-    UPDATE_PROFILE_FAIL,
-} from "../actions";
+    UPDATE_PROFILE_FAIL
+} from "../actions/profileAction";
+
+import {
+    
+    REGISTER_USER_START,
+    REGISTER_USER_SUCCESS,
+    REGISTER_USER_FAIL,
+}
+from "../actions/registerAction"
+
+import{LOGIN_USER_START,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_FAIL,
+} from "../actions/loginAction"
 
 
 export const initialState = {
@@ -34,7 +41,9 @@ export const userReducer = (state = initialState, action) => {
                 isFetching: true
             };
         case LOGIN_USER_SUCCESS:
-          
+            // localStorage.setItem("token", JSON.stringify(action.token))
+            // localStorage.setItem("userID", action.user.id)
+            // console.log(action.payload.token)
             return {
                 ...state,
                 username: action.user.username,

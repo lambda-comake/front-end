@@ -5,7 +5,7 @@ import {
     DELETE_ISSUES_START,
     DELETE_ISSUES_FAIL,
     DELETE_ISSUES_SUCCESS,
-} from "../actions"
+} from "../actions/myIssuesAction"
 
 export const initialState = {
    

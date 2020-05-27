@@ -5,7 +5,7 @@ import {
     GET_EDIT_ISSUES_START,
     GET_EDIT_ISSUES_FAIL,
     GET_EDIT_ISSUES_SUCCESS,
-} from "../actions"
+} from "../actions/editIssueAction"
 
 export const initialState = {
 

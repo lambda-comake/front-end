@@ -41,7 +41,7 @@ let Login = props => {
       .post("/auth/login", formState)
       .then((res) => {
         localStorage.setItem("token", (res.data.token));
-        localStorage.setItem("id", res.data.user.id);
+        // localStorage.setItem("id", res.data.user.id);
         console.log({ res });
         props.loginAction(res);
         push("/");
@@ -94,7 +94,7 @@ return (
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    username: state.user.username,
+    // username: state.user.username,
     
    
   };

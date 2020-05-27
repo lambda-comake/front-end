@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import { useHistory, withRouter } from "react-router-dom";
 import {axiosWithAuth} from '/Users/nickohman/Desktop/front-end/front-end/src/utils/axiosWithAuth.js'
 import { connect } from "react-redux";
 import {registerAction} from '/Users/nickohman/Desktop/front-end/front-end/src/actions/registerAction.js'
-import axios from "axios"
+
 
 import './register.css';
 
@@ -43,7 +43,7 @@ let Register = props => {
       .post("auth/register", formState)
       .then((res) => {
         localStorage.setItem("token", (res.data.token));
-        localStorage.setItem("userID", res.data.user.id);
+        // localStorage.setItem("id", res.data.user.id);
 
         console.log({ res });
         props.registerAction(res);
