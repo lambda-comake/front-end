@@ -32,6 +32,12 @@ const Issues = props => {
 
 
     }
+    
+    const upVote = id => {
+        
+        axiosWithAuth()
+        .put(`/api/issues/${id }`, )
+    }
 
 
     return (
@@ -42,8 +48,11 @@ const Issues = props => {
                     <div key={issue.id}>
                 <p>{issue.title}</p>
                 <p>{issue.description}</p>
+                <p>{issue.upVotes}</p>
                 <button onClick={() => push(`/editIssues/${issue.id}`)}>Edit Issue</button>
                 <button onClick={() => deleteIssue(issue.id)}>Delete Issue</button>
+                <button>Up Vote</button>
+                
                 </div>
                 
                 )
