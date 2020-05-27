@@ -3,7 +3,8 @@ import {BrowserRouter, Route} from 'react-router-dom';
 
 import Login from './components/login/Login';
 import Register from './components/register/Register';
-import Feed from './components/feed/Feed'
+import Feed from './components/feed/Feed';
+import CreatePost from './components/createpost/CreatePost';
 
 import './App.css';
 
@@ -29,6 +30,12 @@ function App() {
         <Route path='/feed'>
 
           <Feed />
+
+        </Route>
+
+        <Route path='/create-post'>
+
+          <CreatePost />
 
         </Route>
 
