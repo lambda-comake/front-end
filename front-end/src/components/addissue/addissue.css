@@ -1,4 +1,4 @@
-.createpost {
+.addissue {
 
     text-align: center;
 
@@ -9,7 +9,7 @@
 
 }
 
-.createpost > input {
+.addissue > input {
 
     border: 1px solid black;
 
@@ -21,7 +21,7 @@
 
 }
 
-.createpost > textarea {
+.addissue > textarea {
 
     resize: none;
 
@@ -34,7 +34,7 @@
 
 }
 
-.createpost > button {
+.addissue > button {
 
     display:block;
 
@@ -54,5 +54,11 @@
 
     outline: none;
 
+
+}
+
+.addissue > button:disabled {
+
+    color: black;
 
 }
