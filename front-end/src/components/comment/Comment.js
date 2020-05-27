@@ -6,7 +6,12 @@ let Comment = props => {
 
 return (
 
-    null
+    <div className='comment'>
+
+        <h4>Name</h4>
+        <p>Message here</p>
+
+    </div>
 
 )
 
