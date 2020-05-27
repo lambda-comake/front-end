@@ -6,7 +6,13 @@ let Issue = props => {
 
 return (
 
-    null
+    <div className='issue'>
+
+        <h3>Title</h3>
+
+        <p>Description</p>
+
+    </div>
 
 )
 
