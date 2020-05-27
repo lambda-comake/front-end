@@ -1,42 +1,92 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory, withRouter } from "react-router-dom";
-import { loginAction } from "/Users/nickohman/Desktop/front-end/front-end/src/actions/loginAction.js"
-import {axiosWithAuth} from "/Users/nickohman/Desktop/front-end/front-end/src/utils/axiosWithAuth.js"
+import React, { useState, useEffect } from 'react';
+import { useHistory, withRouter, Link } from "react-router-dom";
+import { loginAction } from "../../actions/loginAction";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { connect } from "react-redux";
 
-import './login.css'
+import * as yup from 'yup';
 
-//State
+
+import './login.css';
 
 let Login = props => {
   const { push } = useHistory();
 
-  let [formState, setFormState] = useState({
+    //State
 
-    username: '',
-    password: ''
+    let [formState, setFormState] = useState({
 
-  });
+        username: '',
+        password: ''
+    
+    });
 
-  //Functions
+    const [inputErrors, setInputErrors] = useState({ //State for form input validation errors
 
-  let formChange = event => {
+        username: "",
+        password: ""
+
+    });
+
+    const formSchema = yup.object().shape({
+
+        username: yup
+            .string()
+            .required("- Must include a username."),
+        password: yup
+            .string()
+            .min(6, "- Passwords must be at least 6 characters long.")
+            .required(" -Password is Required"),
+    });
+
+
+    //Functions
+
+    let formChange = event => {
 
     setFormState({
 
-      ...formState,
-      [event.target.id]: event.target.value
+        ...formState,
+        [event.target.id]: event.target.value
 
     })
 
+        //Sets inputErrors state if invalid input
+
+        yup
+            .reach(formSchema, event.target.id)
+            .validate(event.target.value)
+            .then(valid => {
+
+                setInputErrors({
+
+                    ...inputErrors,
+                    [event.target.id]: ''
+
+                });
+
+            })
+            .catch(err => {
+
+                setInputErrors({
+
+                    ...inputErrors,
+                    [event.target.id]: err.errors[0]
+
+                });
+
+            })
+
     console.log(formState);
 
-  }
+    event.persist()
 
-  let submitForm = event => {
+    }
+
+    let submitForm = event => {
 
     event.preventDefault()
+      
     axiosWithAuth()
       .post("/auth/login", formState)
       .then((res) => {
@@ -49,37 +99,61 @@ let Login = props => {
       .catch((err) => {
         console.log(err);
       });
-  };
+    }
 
 
+    useEffect(() => {
+
+    //Input validation schema using Yup
+
+    const formSchema = yup.object().shape({
+
+        username: yup
+            .string()
+            .required("- Must include a username."),
+        password: yup
+            .string()
+            .min(6, "- Passwords must be at least 6 characters long.")
+            .required(" -Password is Required"),
+      });
+
+      //Enables button if the input is valid
+
+      formSchema.isValid(formState).then(valid => { 
+
+        document.querySelector('form button').disabled = !valid;
+
+    })
+
+
+    },[formState])
 
 return (
 
-  <div id='login-form'>
+    <div id='form-container'>
 
-    <h2>Member Login</h2>
+        <h2>Member Login</h2>
 
-    <form onSubmit={event => submitForm(event)}>
+        <form onSubmit={event => submitForm(event)}>
 
-      <label htmlFor='email'>Email</label>
+                <label htmlFor='username'>Username {inputErrors.username}</label>
 
-      <input
-        type='text'
-        id='username'
-        name='username'
-        onChange={event => formChange(event)}
-        value={formState.email} />
+                <input 
+                type='text' 
+                id='username' 
+                onChange={event => formChange(event)}
+                value={formState.username}/>
+                
 
+                <label htmlFor='password'>Password {inputErrors.password}</label>
 
-      <label htmlFor='password'>Password</label>
-
-      <input
-        type='text'
-        id='password'
-        onChange={event => formChange(event)}
-        value={formState.password} />
-
-      <button>Login</button>
+                <input 
+                type='password' 
+                id='password' 
+                onChange={event => formChange(event)}
+                value={formState.password}/>
+                    
+                <button disabled>Login</button>
 
     </form>
 
@@ -94,7 +168,7 @@ return (
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    // username: state.user.username,
+    //username: state.user.username,
     
    
   };
@@ -103,3 +177,5 @@ const mapStateToProps = (state) => {
 export default withRouter(
   connect(mapStateToProps, { loginAction })(Login)
 );
+
+//export default Login;
