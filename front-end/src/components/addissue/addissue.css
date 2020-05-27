@@ -1,0 +1,64 @@
+.addissue {
+
+    text-align: center;
+
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+}
+
+.addissue > input {
+
+    border: 1px solid black;
+
+    width: 250px;
+    height: 25px;
+    text-indent: 5px;
+
+    outline: none;
+
+}
+
+.addissue > textarea {
+
+    resize: none;
+
+    width: 250px;
+    height: 150px;
+    text-indent: 5px;
+
+    border: 1px solid black;
+    outline: none;
+
+}
+
+.addissue > button {
+
+    display:block;
+
+    width: 50%;
+    height: 30px;
+    
+    margin-left: 25%;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    border: 1px solid black;
+
+    border-radius: 10px;
+
+    background-color: white;
+
+    outline: none;
+
+
+}
+
+.addissue > button:disabled {
+
+    color: black;
+
+}
