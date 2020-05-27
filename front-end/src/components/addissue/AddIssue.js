@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import './createpost.css'
+import './addissue.css'
 
-let CreatePost = props => {
+let AddIssue = props => {
 
     //State
 
@@ -61,4 +61,4 @@ let CreatePost = props => {
 
 }
 
-export default CreatePost;
+export default AddIssue;

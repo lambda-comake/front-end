@@ -4,7 +4,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Feed from './components/feed/Feed';
-import CreatePost from './components/createpost/CreatePost';
+import AddIssue from './components/addissue/AddIssue';
 
 import './App.css';
 
@@ -33,9 +33,9 @@ function App() {
 
         </Route>
 
-        <Route path='/create-post'>
+        <Route path='/add-issue'>
 
-          <CreatePost />
+          <AddIssue />
 
         </Route>
 
