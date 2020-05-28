@@ -6,7 +6,7 @@ import IssueForm from './IssueForm'
 
 
 const Main = () => {
-    const { push } = useHistory();
+    // const { push } = useHistory();
 
     const [issueBoard, setIssueBoard] = useState([
         {

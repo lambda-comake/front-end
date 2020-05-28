@@ -1,32 +1,39 @@
 import React, {useState} from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {useHistory} from "react-router-dom"
+import {connect, useDispatch} from "react-redux"
+import {submitNewIssue} from '../actions/allIssuesAction'
+
 
 const IssueForm = props => {
     const history=useHistory()
+    const dispatch = useDispatch()
 
 
     const [issue, setIssue] = useState ({
         title: '',
         description: '',
-        user_id: Number(localStorage.getItem('user_id'))
+        user_id: Number(localStorage.getItem('user_id')),
+        upVotes: 0
     })
 
     const submitIssue = e => {
         e.preventDefault();
-        axiosWithAuth()
-        .post('/api/issues', issue)
-        .then(res => {
-            setIssue({
-                title: '',
-                description: '',
-                user_id: Number(localStorage.getItem('user_id'))
-            })
-            history.go(0)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        dispatch(submitNewIssue(issue))
+        history.go(0)
+        // axiosWithAuth()
+        // .post('/api/issues', issue)
+        // .then(res => {
+        //     setIssue({
+        //         title: '',
+        //         description: '',
+        //         user_id: Number(localStorage.getItem('user_id'))
+        //     })
+        //     history.go(0)
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
     }
         const issueChange = e => {
             e.persist();
@@ -60,5 +67,10 @@ const IssueForm = props => {
         </form>
     )
 }
+const mapStateToProps = state => {
+    return {
+        issues: state.allIssues.issues
+    }
+}
 
-export default IssueForm;
+export default connect(mapStateToProps, {submitNewIssue})(IssueForm);

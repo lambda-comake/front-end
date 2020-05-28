@@ -21,11 +21,11 @@ import{LOGIN_USER_START,
 } from "../actions/loginAction"
 
 import {
-    CREATE_PROFILE_START,
+    // CREATE_PROFILE_START,
     CREATE_PROFILE_SUCCESS,
-    CREATE_PROFILE_FAIL,
+    // CREATE_PROFILE_FAIL,
 } from "../actions/profileAction"
-import { bindActionCreators } from "redux";
+// import { bindActionCreators } from "redux";
 
 
 export const initialState = {
