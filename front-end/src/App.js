@@ -9,6 +9,7 @@ import EditIssue from './components/editIssue'
 // import Feed from './components/feed/Feed';
 import AddIssue from './components/addissue/AddIssue';
 import PrivateRoute from './utils/PrivateRoute'
+import Header from './components/header'
 
 import './App.css';
 // import { updateProfile } from './actions/profileAction';
@@ -19,7 +20,8 @@ function App() {
     <div className="App">
 
       <BrowserRouter>
-        <Route exact path='/login' component={Login} /> 
+        <Header />
+        <Route exact path='/' component={Login} /> 
         <Route exact path='/register' component={Register} /> 
 
 
