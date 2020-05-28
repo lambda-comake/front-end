@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
-import {useHistory} from 'react-router-dom'
+import {connect, useDispatch} from "react-redux"
+import {useHistory} from 'react-router-dom';
+import {getAllIssues} from '../actions/allIssuesAction'
+
 
 const Issues = props => {
-    const [allIssues, setAllIssues] = useState([]);
-
+    // const [allIssues, setAllIssues] = useState([]);
+    const dispatch = useDispatch()
     const {push} = useHistory();
     const history = useHistory()
 
     useEffect(() => {
-        axiosWithAuth()
-            .get("/api/issues")
-            .then((res) => {
-                setAllIssues(res.data)
-            })
-            .catch((err) => {
-                console.log({ err });
-            });
+        dispatch(getAllIssues())
+        // axiosWithAuth()
+        //     .get("/api/issues")
+        //     .then((res) => {
+        //         setAllIssues(res.data)
+        //     })
+        //     .catch((err) => {
+        //         console.log({ err });
+        //     });
     }, [])
 
     const deleteIssue = id => {
@@ -33,17 +37,22 @@ const Issues = props => {
 
     }
     
-    const upVote = id => {
-        
+    const upVote = issue => {
+        const newissue = issue
+        const votes = parseInt(issue.upVotes) + 1
+
         axiosWithAuth()
-        .put(`/api/issues/${id }`, )
+        .put(`/api/issues/${issue.id }`,{...newissue, upVotes: votes} )
+        .then(res => {
+            history.go(0)
+        })
     }
 
 
     return (
         <div>
             <h1>Issues</h1>
-            {allIssues.map(issue => {
+            {props.issues.map(issue => {
                 return(
                     <div key={issue.id}>
                 <p>{issue.title}</p>
@@ -51,7 +60,7 @@ const Issues = props => {
                 <p>{issue.upVotes}</p>
                 <button onClick={() => push(`/editIssues/${issue.id}`)}>Edit Issue</button>
                 <button onClick={() => deleteIssue(issue.id)}>Delete Issue</button>
-                <button>Up Vote</button>
+                <button onClick={() => upVote(issue)}>Up Vote</button>
                 
                 </div>
                 
@@ -62,4 +71,9 @@ const Issues = props => {
     )
 }
 
-export default Issues;
+const mapStateToProps = state => {
+    return {
+        issues: state.allIssues.issues
+    }
+}
+export default connect(mapStateToProps, {getAllIssues})(Issues);

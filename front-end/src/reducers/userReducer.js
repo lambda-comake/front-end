@@ -54,11 +54,13 @@ export const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 // email: action.user.email,
-                username: action.user.username,
+                username: action.payload.username,
                 // first_name: action.user.first_name,
                 // last_name: action.user.last_name,
-                id: action.user_id,
+                token: action.payload.token,
+                user_id: action.payload.user_id,
                 isFetching: false,
+                isLoggedIn: true,
             };
         case LOGIN_USER_FAIL:
             return {

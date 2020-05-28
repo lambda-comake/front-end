@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {getProfile} from '../actions/profileAction'
-import {updateProfile} from '../actions/profileAction'
-import {createProfile} from '../actions/profileAction'
+import {getProfile, updateProfile, createProfile} from '../actions/profileAction'
+
 
 
 
