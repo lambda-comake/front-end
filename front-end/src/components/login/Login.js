@@ -90,11 +90,12 @@ let Login = props => {
     axiosWithAuth()
       .post("/auth/login", formState)
       .then((res) => {
-        localStorage.setItem("token", (res.data.token));
-        // localStorage.setItem("id", res.data.user.id);
-        console.log({ res });
+        // console.log(res.data)
         props.loginAction(res);
-        push("/");
+        localStorage.setItem("token", (res.data.token));
+        localStorage.setItem("user_id", (res.data.user_id));
+        // console.log('!!!!!!!!!!!!!!',{ res });
+        push("/main");
       })
       .catch((err) => {
         console.log(err);
@@ -113,28 +114,27 @@ let Login = props => {
             .required("- Must include a username."),
         password: yup
             .string()
-            .min(6, "- Passwords must be at least 6 characters long.")
+            .min(2, "- Passwords must be at least 6 characters long.")
             .required(" -Password is Required"),
       });
 
-      //Enables button if the input is valid
+      // Enables button if the input is valid
 
       formSchema.isValid(formState).then(valid => { 
 
-        document.querySelector('form button').disabled = !valid;
+        document.querySelector('form button').disabled = !valid
 
     })
 
 
     },[formState])
-
 return (
 
     <div id='form-container'>
 
         <h2>Member Login</h2>
 
-        <form onSubmit={event => submitForm(event)}>
+        <form onSubmit={event => {submitForm(event)}}>
 
                 <label htmlFor='username'>Username {inputErrors.username}</label>
 
@@ -153,7 +153,7 @@ return (
                 onChange={event => formChange(event)}
                 value={formState.password}/>
                     
-                <button disabled>Login</button>
+                <button>Login</button>
 
     </form>
 
@@ -168,6 +168,7 @@ return (
 const mapStateToProps = (state) => {
   console.log(state);
   return {
+    issues: state.allIssues.issues
     //username: state.user.username,
     
    

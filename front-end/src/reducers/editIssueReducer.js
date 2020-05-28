@@ -9,15 +9,13 @@ import {
 
 export const initialState = {
 
-    isFetching: false,
-    error: "",
+   
     issue: {
         description: "",
         id: "",
         short_description: "",
         upvotes: "",
-        user_id: "",
-        zip_code: "",
+        
     },
 }
 
@@ -32,7 +30,7 @@ export const editIssueReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                error: action.payload,
+                
             };
         case EDIT_ISSUES_SUCCESS:
             return {
@@ -42,8 +40,7 @@ export const editIssueReducer = (state = initialState, action) => {
                     id: "",
                     short_description: "",
                     upvotes: "",
-                    user_id: "",
-                    zip_code: "",
+                    
                 },
                 isFetching: false,
                 error: "",

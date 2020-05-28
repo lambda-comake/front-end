@@ -16,7 +16,7 @@ export const getMyIssues = props => {
         dispatch({ type: GET_ISSUES_START })
         axiosWithAuth()
         
-            .get(`/issues?user_id=${localStorage.getItem("userID")}`)
+            .get(`/issues?user_id=${localStorage.getItem("id")}`)
             
             .then(res => {
                 console.log({ res })
