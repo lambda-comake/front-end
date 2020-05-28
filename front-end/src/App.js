@@ -19,7 +19,6 @@ function App() {
   return (
     <div className="App">
 
-      <BrowserRouter>
         <Header />
         <Route exact path='/' component={Login} /> 
         <Route exact path='/register' component={Register} /> 
@@ -36,7 +35,6 @@ function App() {
 
         </PrivateRoute>
 
-      </BrowserRouter>
      
     </div>
   );

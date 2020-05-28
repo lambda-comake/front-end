@@ -1,18 +1,14 @@
 import React from 'react'
-import {
-    BrowserRouter as Router,
-    Link,
-   
-  } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Header=() => {
     return (
-       <Router>
+<>
+<p>header!!!!!!!!!!!!!!</p>
           <Link to="/">Login</Link>
            <Link to="/register">Sign Up</Link>
-           
            <Link href="https://lambda-comake.github.io/UI/">More Info</Link>
-       </Router>
+</>
     )
 }
 export default Header
