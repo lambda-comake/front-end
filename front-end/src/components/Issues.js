@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import {connect, useDispatch} from "react-redux"
 import {useHistory} from 'react-router-dom';
@@ -21,7 +21,7 @@ const Issues = props => {
         //     .catch((err) => {
         //         console.log({ err });
         //     });
-    }, [])
+    }, [dispatch])
 
     const deleteIssue = id => {
         axiosWithAuth()
@@ -33,10 +33,8 @@ const Issues = props => {
         .catch(err => {
             console.log('errr')
         })
-
-
     }
-    
+
     const upVote = issue => {
         const newissue = issue
         const votes = parseInt(issue.upVotes) + 1

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {getProfile, updateProfile, createProfile} from '../actions/profileAction'
@@ -11,7 +11,7 @@ const UserProfile = (props) => {
   
   const { push } = useHistory();
  
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
 
 //   useEffect(() => {
 //     props.getProfile(localStorage.getItem("id"));

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import {useHistory, useParams} from 'react-router-dom'
+import {connect, useDispatch} from "react-redux"
+import {getIssueById, submitIssueById} from '../actions/allIssuesAction'
 
 
 const EditIssue = props => {
@@ -8,38 +10,36 @@ const EditIssue = props => {
         title: '',
         description: '',
         user_id: Number(localStorage.getItem('user_id')),
+        upVotes: 0
     })
-    
-    const history=useHistory()
+    const dispatch = useDispatch()
+    const history=useHistory();
     const { id } = useParams();
+    const {push} = useHistory();
 
     useEffect(() => {
-        axiosWithAuth()
-        .get(`https://co-make-buildweek.herokuapp.com/api/issues/${id}`)
-        .then(res => {
-            setUpdateIssue({
-                title: res.data.title,
-                description: res.data.description,
-                
-            })
-        })
-    }, [])
+        dispatch(getIssueById(id))
+    }, [dispatch])
 
     const submitIssue = e => {
         e.preventDefault();
-        axiosWithAuth()
-        .post('/api/issues', updateIssue, id)
-        .then(res => {
-            setUpdateIssue({
-                title: '',
-                description: '',
-                user_id: Number(localStorage.getItem('user_id'))
-            })
-            history.go(0)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        dispatch(submitIssueById(updateIssue, id))
+        push("/main")
+        // axiosWithAuth()
+        // .put(`/api/issues/${id}`, updateIssue, id)
+        // .then(res => {
+        //     setUpdateIssue({
+        //         title: '',
+        //         description: '',
+        //         user_id: Number(localStorage.getItem('user_id'))
+        //     })
+        //     // history.go(0)
+        //     push("/main")
+
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
     }
 
     const issueChange = e => {
@@ -77,4 +77,9 @@ const EditIssue = props => {
     )
 }
 
-export default EditIssue
+const mapStateToProps = state => {
+    return {
+        issues: state.allIssues.issues
+    }
+}
+export default connect(mapStateToProps, {getIssueById, submitIssueById})(EditIssue);
