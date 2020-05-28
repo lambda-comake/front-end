@@ -10,12 +10,8 @@ export const registerAction = res => {
         dispatch({ type: REGISTER_USER_START })
         dispatch({
             type: REGISTER_USER_SUCCESS,
-            token: res.data.token,
-            user: res.data.user,
+            payload: res.data
         })
-        dispatch({
-            type: REGISTER_USER_FAIL,
-            payload: `${res}`
-        })
+       
     }
 }

@@ -97,7 +97,7 @@ let Register = props => {
       .then((res) => {
         console.log({ res });
         props.registerAction(res);
-        push("/login");
+        push("/");
       })
       .catch((err) => {
         console.log(err);

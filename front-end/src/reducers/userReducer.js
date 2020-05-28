@@ -75,20 +75,8 @@ export const userReducer = (state = initialState, action) => {
             };
         case REGISTER_USER_SUCCESS:
             // localStorage.setItem("token", JSON.stringify(action.token))
-
-            return {
-                ...state,
-                username: action.user.username,
-
-                id: action.user.id,
-                isFetching: false,
-            };
-        case REGISTER_USER_FAIL:
-            return {
-                ...state,
-                isFetching: false,
-                error: action.payload
-            };
+            return state
+            
         case GET_PROFILE_SUCCESS:
             localStorage.setItem("userID", action.payload.id)
 
