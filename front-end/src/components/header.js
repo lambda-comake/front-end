@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const Header=() => {
     return (
 <>
-<p>header!!!!!!!!!!!!!!</p>
+<p>header!!!!!</p>
           <Link to="/">Login</Link>
            <Link to="/register">Sign Up</Link>
            <Link href="https://lambda-comake.github.io/UI/">More Info</Link>
