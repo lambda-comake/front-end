@@ -17,7 +17,7 @@ const EditIssue = props => {
         upVotes: 0
     })
 
-    const [inputErrors, setInputErrors] = useState({ //State for form input validation errors
+    const [inputErrors, setInputErrors] = useState({ //State for form input validation errors. May use these to display ui later
 
         username: "",
         password: ""
