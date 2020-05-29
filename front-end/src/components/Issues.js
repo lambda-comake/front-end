@@ -28,11 +28,11 @@ const Issues = props => {
         axiosWithAuth()
         .delete(`api/issues/${id}`)
         .then( res => {
-         console.log('issue deleted') 
+        //  console.log('issue deleted') 
          history.go(0)  
         })
         .catch(err => {
-            console.log('errr')
+            // console.log('errr')
         })
     }
 

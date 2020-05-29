@@ -7,17 +7,13 @@ import {
     GET_EDIT_ISSUES_SUCCESS,
 } from "../actions/editIssueAction"
 
-export const initialState = {
-
-   
-    issue: {
-        description: "",
+export const initialState = {  
+        title: "",
         id: "",
-        short_description: "",
-        upvotes: "",
-        
-    },
-}
+        description: "",
+        upVotes: "",
+        user_id: ""
+      }
 
 export const editIssueReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -35,16 +31,13 @@ export const editIssueReducer = (state = initialState, action) => {
         case EDIT_ISSUES_SUCCESS:
             return {
                 ...state,
-                issue: {
                     description: "",
                     id: "",
-                    short_description: "",
-                    upvotes: "",
+                    title: "",
+                    upVotes: "",
+                    user_id:""
                     
-                },
-                isFetching: false,
-                error: "",
-            };
+                }
         case GET_EDIT_ISSUES_START:
             return {
                 ...state,

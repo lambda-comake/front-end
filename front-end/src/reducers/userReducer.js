@@ -39,7 +39,7 @@ export const initialState = {
     error: "",
     myIssues: [], 
 }
-console.log('reducer!!!!!!', initialState.email)
+// console.log('reducer!!!!!!', initialState.email)
 export const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_USER_START:

@@ -54,7 +54,7 @@ let Register = props => {
 
     });
 
-    console.log(formState);
+    // console.log(formState);
 
         //Sets inputErrors state if invalid input
 
@@ -82,7 +82,7 @@ let Register = props => {
 
             })
 
-    console.log(formState);
+    // console.log(formState);
 
     event.persist()
 
@@ -97,12 +97,12 @@ let Register = props => {
       axiosWithAuth()
       .post("auth/register", formState)
       .then((res) => {
-        console.log({ res });
+        // console.log({ res });
         props.registerAction(res);
         push("/");
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         alert("There was an error. Please try again.")
         
       });
@@ -161,7 +161,7 @@ return (
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.user);
+//   console.log(state.user);
   return {
     username: state.user.username,
    

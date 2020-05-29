@@ -79,7 +79,7 @@ let Login = props => {
 
             })
 
-    console.log(formState);
+    // console.log(formState);
 
     event.persist()
 
@@ -102,7 +102,7 @@ let Login = props => {
         push("/main");
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
     }
 
@@ -161,7 +161,7 @@ return (
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     issues: state.allIssues.issues
     //username: state.user.username,

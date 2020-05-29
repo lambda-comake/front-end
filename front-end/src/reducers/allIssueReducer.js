@@ -42,7 +42,7 @@ export const allIssueReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                issue: action.payload
+                issues: action.payload
             }
         case 'FETCH_ISSUEID_FAILURE':
             return {

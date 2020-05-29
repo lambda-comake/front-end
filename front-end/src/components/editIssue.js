@@ -46,6 +46,7 @@ const EditIssue = props => {
     const history=useHistory();
     const { id } = useParams();
     const {push} = useHistory();
+    
 
     useEffect(() => {
         dispatch(getIssueById(id))
@@ -55,6 +56,9 @@ const EditIssue = props => {
         e.preventDefault();
         dispatch(submitIssueById(updateIssue, id))
         push("/main")
+
+
+
         // axiosWithAuth()
         // .put(`/api/issues/${id}`, updateIssue, id)
         // .then(res => {
@@ -97,7 +101,7 @@ const EditIssue = props => {
                 name='title'
                 type="text"
                 onChange={issueChange}
-                value={updateIssue.title}
+                value={props.title}
                 placeholder="Title"
                 />
             </label>
@@ -117,7 +121,8 @@ const EditIssue = props => {
 
 const mapStateToProps = state => {
     return {
-        issues: state.allIssues.issues
+        title:state.allIssues.title,
+        description: state.allIssues.description
     }
 }
 export default connect(mapStateToProps, {getIssueById, submitIssueById})(EditIssue);

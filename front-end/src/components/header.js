@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './header.css'
 
@@ -9,7 +9,7 @@ const Header=() => {
 
             <Link to="/">Login</Link>
             <Link to="/register">Sign Up</Link>
-            <Link href="https://lambda-comake.github.io/UI/">More Info</Link>
+            <a href="https://lambda-comake.github.io/UI/">More Info</a>
 
         </nav>
     )
