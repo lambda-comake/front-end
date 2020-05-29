@@ -40,7 +40,7 @@ const IssueForm = props => {
             .required("Must include user ID."),
         upVotes: yup
             .number()
-            .required("Must include upVotes initialized at 0")
+            .required("Must include upVotes initialized at 0.")
     });
 
     //Functions

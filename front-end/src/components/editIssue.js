@@ -4,14 +4,44 @@ import {useHistory, useParams} from 'react-router-dom'
 import {connect, useDispatch} from "react-redux"
 import {getIssueById, submitIssueById} from '../actions/allIssuesAction'
 
+import * as yup from 'yup';
 
 const EditIssue = props => {
+
+    //State
+
     const [updateIssue, setUpdateIssue]= useState({
         title: '',
         description: '',
         user_id: Number(localStorage.getItem('user_id')),
         upVotes: 0
     })
+
+    const [inputErrors, setInputErrors] = useState({ //State for form input validation errors
+
+        username: "",
+        password: ""
+
+    });
+
+    const formSchema = yup.object().shape({
+
+        title: yup
+            .string()
+            .required("Must include a title."),
+        description: yup
+            .string()
+            .required("Must include a description."),
+        user_id: yup
+            .number()
+            .required("Must include user ID."),
+        upVotes: yup
+            .number()
+            .required("Must include upVotes initialized at 0.")
+    });
+
+    //Functions
+
     const dispatch = useDispatch()
     const history=useHistory();
     const { id } = useParams();
@@ -41,6 +71,14 @@ const EditIssue = props => {
         //     console.log(err)
         // })
     }
+
+    useEffect(() => { // Enables button if the input is valid
+
+        formSchema.isValid(updateIssue).then(valid => { 
+  
+          document.querySelector('form button').disabled = !valid
+  
+      })},[updateIssue])
 
     const issueChange = e => {
         e.persist();
