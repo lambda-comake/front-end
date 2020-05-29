@@ -6,16 +6,16 @@ import {getIssueById, submitIssueById} from '../actions/allIssuesAction'
 
 
 const EditIssue = props => {
-    const [updateIssue, setUpdateIssue]= useState({
-        title: '',
-        description: '',
-        user_id: Number(localStorage.getItem('user_id')),
-        upVotes: 0
-    })
+    console.log(props)
+    const initialState ={
+        title: props.title,
+    }
+    const [updateIssue, setUpdateIssue]= useState({})
     const dispatch = useDispatch()
     const history=useHistory();
     const { id } = useParams();
     const {push} = useHistory();
+    
 
     useEffect(() => {
         dispatch(getIssueById(id))
@@ -25,6 +25,9 @@ const EditIssue = props => {
         e.preventDefault();
         dispatch(submitIssueById(updateIssue, id))
         push("/main")
+
+
+
         // axiosWithAuth()
         // .put(`/api/issues/${id}`, updateIssue, id)
         // .then(res => {
@@ -59,7 +62,7 @@ const EditIssue = props => {
                 name='title'
                 type="text"
                 onChange={issueChange}
-                value={updateIssue.title}
+                value={props.title}
                 placeholder="Title"
                 />
             </label>
@@ -79,7 +82,8 @@ const EditIssue = props => {
 
 const mapStateToProps = state => {
     return {
-        issues: state.allIssues.issues
+        title:state.allIssues.title,
+        description: state.allIssues.description
     }
 }
 export default connect(mapStateToProps, {getIssueById, submitIssueById})(EditIssue);

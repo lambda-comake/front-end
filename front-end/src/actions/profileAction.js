@@ -36,20 +36,20 @@ export const getProfile = props => {
 }
 
 export const updateProfile = props => {
-    console.log({ props })
+    // console.log({ props })
     return dispatch => {
         dispatch({ type: UPDATE_PROFILE_START })
         axiosWithAuth()
             .put(`/api/profiles/${localStorage.getItem("userId")}`, props)
             .then(res => {
-                console.log({ res })
+                // console.log({ res })
                 dispatch({
                     type: UPDATE_PROFILE_SUCCESS,
                     payload: res.data,
                 })
             })
             .catch(err => {
-                console.log({ err })
+                // console.log({ err })
                 dispatch({
                     type: UPDATE_PROFILE_FAIL,
                     payload: `update profile fail`
@@ -65,7 +65,7 @@ export const updateProfile = props => {
             axiosWithAuth()
             .post('/api/profiles', props)
             .then((res) => {
-                console.log('profile',res.data)
+                // console.log('profile',res.data)
                 dispatch({
                     type: CREATE_PROFILE_SUCCESS,
                     payload: res.data,

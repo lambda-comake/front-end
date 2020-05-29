@@ -22,7 +22,9 @@ export const getIssueById = id => {
         axiosWithAuth()
         .get(`/api/issues/${id}`)
         .then(resp => {
+            console.log(resp)
             dispatch({type: 'FETCH_ISSUEID_SUCCESS', payload: resp.data})
+            
         })
         .catch(err => {
             dispatch({type: 'FETCH_ISSUEID_FAILURE', payload: err.message})

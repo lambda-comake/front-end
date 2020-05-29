@@ -1,14 +1,21 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Header=() => {
+
+const Header = () => {
     return (
-<>
-<p>header!!!!!</p>
-          <Link to="/">Login</Link>
-           <Link to="/register">Sign Up</Link>
-           <Link href="https://lambda-comake.github.io/UI/">More Info</Link>
-</>
+        <>
+        <div className='container'>
+            <div className='logo'>
+                <p>Co-Make</p>
+            </div>
+            <div className='links'>
+            <Link to="/">Login</Link>
+            <Link to="/register">Sign Up</Link>
+            <a href="https://lambda-comake.github.io/UI/">More Info</a>
+            </div>
+            </div>
+        </>
     )
 }
 export default Header

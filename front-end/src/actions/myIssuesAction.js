@@ -19,14 +19,14 @@ export const getMyIssues = props => {
             .get(`/issues?user_id=${localStorage.getItem("id")}`)
             
             .then(res => {
-                console.log({ res })
+                // console.log({ res })
                 dispatch({
                     type: GET_ISSUES_SUCCESS,
                     payload: res.data,
                 })
             })
             .catch(err => {
-                console.log({err})
+                // console.log({err})
                 dispatch({
                     type: GET_ISSUES_FAIL,
                     payload: `${err}`
@@ -38,20 +38,20 @@ export const getMyIssues = props => {
 
 
 export const deleteMyIssue = props => {
-    console.log({ props })
+    // console.log({ props })
     return dispatch => {
         dispatch({ type: DELETE_ISSUES_START })
         axiosWithAuth()
             .delete(`/issues/${props}`)
             .then(res => {
-                console.log({ res })
+                // console.log({ res })
                 dispatch({
                     type: DELETE_ISSUES_SUCCESS,
                     payload: res.data,
                 })
             })
             .catch(err => {
-                console.log({ err })
+                // console.log({ err })
                 dispatch({
                     type: DELETE_ISSUES_FAIL,
                     payload: `${err}`

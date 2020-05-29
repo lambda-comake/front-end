@@ -15,14 +15,14 @@ export const editMyIssue = props => {
         axiosWithAuth()
             .put(`/issues/${props.id}`, props)
             .then(res => {
-                console.log("edit res", { res })
+                // console.log("edit res", { res })
                 dispatch({
                     type: EDIT_ISSUES_SUCCESS,
                     payload: res.data,
                 })
             })
             .catch(err => {
-                console.log({ err })
+                // console.log({ err })
                 dispatch({
                     type: EDIT_ISSUES_FAIL,
                     payload: `${err}`
@@ -45,7 +45,7 @@ export const getEditMyIssue = props => {
                 })
             })
             .catch(err => {
-                console.log({ err })
+                // console.log({ err })
                 dispatch({
                     type: GET_EDIT_ISSUES_FAIL,
                     payload: `${err}`

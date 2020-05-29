@@ -33,7 +33,7 @@ const UserProfile = (props) => {
       age: "",
       user_id: Number(localStorage.getItem('user_id'))
   });
-  console.log('userInfo',userInfo)
+  // console.log('userInfo',userInfo)
 
   const handleChange = (e) => {
     e.persist();
