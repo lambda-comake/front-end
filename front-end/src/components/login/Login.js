@@ -9,6 +9,8 @@ import * as yup from 'yup';
 
 import './login.css';
 
+import gsap from 'gsap';
+
 let Login = props => {
   const { push } = useHistory();
 
@@ -86,8 +88,10 @@ let Login = props => {
     let submitForm = event => {
 
     event.preventDefault()
-      
-    axiosWithAuth()
+
+    const afterAnimation = () => {
+
+      axiosWithAuth()
       .post("/auth/login", formState)
       .then((res) => {
         // console.log(res.data)
@@ -101,6 +105,13 @@ let Login = props => {
         console.log(err);
       });
     }
+
+    gsap.to('#form-container', {duration: 1, opacity: 0, onComplete:afterAnimation});
+      
+
+
+    }
+
 
 
     useEffect(() => { // Enables button if the input is valid

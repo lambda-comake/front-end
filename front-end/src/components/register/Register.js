@@ -6,11 +6,11 @@ import {axiosWithAuth} from '../../utils/axiosWithAuth'
 import { connect } from "react-redux";
 import {registerAction} from '../../actions/registerAction';
 
-
-
 import * as yup from 'yup';
 
 import './register.css';
+
+import gsap from 'gsap';
 
 let Register = props => {
   const { push } = useHistory();
@@ -92,7 +92,9 @@ let Register = props => {
 
     event.preventDefault()
 
-        axiosWithAuth()
+    const afterAnimation = () => {
+
+      axiosWithAuth()
       .post("auth/register", formState)
       .then((res) => {
         console.log({ res });
@@ -104,6 +106,10 @@ let Register = props => {
         alert("There was an error. Please try again.")
         
       });
+
+    }
+
+    gsap.to('#form-container', {duration: 1, opacity: 0, onComplete:afterAnimation});
 
 
     }

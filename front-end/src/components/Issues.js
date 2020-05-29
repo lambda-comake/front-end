@@ -47,6 +47,15 @@ const Issues = props => {
         })
     }
 
+    if (props.issues === undefined) {
+
+        return (
+
+            <h1>Waiting for data...</h1>
+
+        )
+
+    }
 
     return (
         <div >
