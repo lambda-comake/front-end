@@ -57,12 +57,28 @@ const Issues = props => {
 
     }
 
+  (function(d, s, id) { //Facebook code for implementing a share button
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
     return (
-        <div >
+        <div id='issues-container'>
             <h1>Issues</h1>
+
+            <div class="fb-share-button" 
+                data-href="https://front-end-ten-omega.now.sh/" 
+                data-layout="button_count"
+                size="large">
+            </div>
+
             {props.issues.map(issue => {
                 return(
                     <div className='issue' key={issue.id}>
+
                         <b><p>{issue.title}</p></b>
                         <p>{issue.description}</p>
                         <p>{issue.upVotes}</p>
