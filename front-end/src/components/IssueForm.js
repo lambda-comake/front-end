@@ -1,14 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import {useHistory} from "react-router-dom"
 import {connect, useDispatch} from "react-redux"
 import {submitNewIssue} from '../actions/allIssuesAction'
+
+import * as yup from 'yup';
 
 
 const IssueForm = props => {
     const history=useHistory()
     const dispatch = useDispatch()
 
+    //State
 
     const [issue, setIssue] = useState ({
         title: '',
@@ -16,6 +19,31 @@ const IssueForm = props => {
         user_id: Number(localStorage.getItem('user_id')),
         upVotes: 0
     })
+
+    const [inputErrors, setInputErrors] = useState({ //State for form input validation errors
+
+        username: "",
+        password: ""
+
+    });
+
+    const formSchema = yup.object().shape({
+
+        title: yup
+            .string()
+            .required("Must include a title."),
+        description: yup
+            .string()
+            .required("Must include a description."),
+        user_id: yup
+            .number()
+            .required("Must include user ID."),
+        upVotes: yup
+            .number()
+            .required("Must include upVotes initialized at 0")
+    });
+
+    //Functions
 
     const submitIssue = e => {
         e.preventDefault();
@@ -42,6 +70,16 @@ const IssueForm = props => {
                 [e.target.name]: e.target.value
             })
         }
+
+
+        useEffect(() => { // Enables button if the input is valid
+
+            formSchema.isValid(issue).then(valid => { 
+      
+              document.querySelector('form button').disabled = !valid
+      
+          })},[issue])
+        
 
         return (
         <form onSubmit={submitIssue}>
