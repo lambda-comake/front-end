@@ -6,6 +6,8 @@ import {submitNewIssue} from '../actions/allIssuesAction'
 
 import * as yup from 'yup';
 
+import './issueform.css'
+
 const IssueForm = props => {
     const history=useHistory()
     const dispatch = useDispatch()
@@ -81,23 +83,26 @@ const IssueForm = props => {
         
 
         return (
-        <form onSubmit={submitIssue}>
+        <form id='issueform' onSubmit={submitIssue}>
+
+            <p>Submit an issue</p>
+
             <label>
                 <input 
                 name='title'
                 type="text"
                 onChange={issueChange}
                 value={issue.title}
-                placeholder="Title"
+                placeholder="Type your title here"
                 />
             </label>
             <label>
-                <input 
+                <textarea 
                 name='description'
                 type="text"
                 onChange={issueChange}
                 value={issue.description}
-                placeholder="Description"
+                placeholder="Tell us about the issue"
                 />
             </label>
             <button>Submit</button>

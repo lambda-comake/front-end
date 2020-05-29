@@ -1,0 +1,72 @@
+#issueform {
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 10px;
+    padding: 40px 60px 20px 60px;
+
+    background-color: #F8F8F8;
+
+    box-shadow: 1px 1px 5px black;
+
+}
+
+#issueform > label > input {
+
+    width: 100%;
+    height: 30px;
+
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    border-radius: 10px;
+
+    text-indent: 10px;
+
+    outline: none;
+
+    
+
+}
+
+
+#issueform > label > textarea {
+
+    resize: none;
+
+    width: 100%;
+    height: 150px;
+    text-indent: 5px;
+
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    outline: none;
+
+}
+
+#issueform > button {
+
+    display:block;
+
+    width: 50%;
+    height: 30px;
+    
+    margin-left: 25%;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    border: 1px solid black;
+
+    border-radius: 10px;
+
+    background-color: white;
+
+    outline: none;
+
+
+}
+
+#issueform > button:disabled {
+
+    color: black;
+
+}
