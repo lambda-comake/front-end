@@ -108,31 +108,13 @@ let Register = props => {
 
     }
 
-    useEffect(() => {
-
-    //Input validation schema using Yup
-
-    const formSchema = yup.object().shape({
-
-        username: yup
-            .string()
-            .required("- Must include a username."),
-        password: yup
-            .string()
-            .min(2, "- Passwords must be at least 6 characters long.")
-            .required("- Password is Required"),
-      });
-
-      //Enables button if the input is valid
+    useEffect(() => { //Enables button if the input is valid
 
       formSchema.isValid(formState).then(valid => { 
 
         document.querySelector('form button').disabled = !valid;
 
-    })
-
-
-    },[formState])
+    })},[formState])
 
 
 return (
