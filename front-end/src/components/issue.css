@@ -1,0 +1,64 @@
+#issues-container > h1 {
+
+    display: inline-block;
+    margin-right: 20px;
+
+}
+
+#issues-container .fb_iframe_widget {
+
+    position: absolute;
+    left: 100;
+    top: 97px;
+
+}
+
+.issue {
+
+    width: 300px;
+
+    padding: 40px 60px 20px 60px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+
+    background-color: #F8F8F8;
+
+    box-shadow: 1px 1px 5px black;
+
+}
+
+.issueControls {
+
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.issueControls > button { 
+
+
+    height: 30px;
+
+    background-color: white;
+    color: black;
+
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    border-radius: 10px;
+
+    outline: none;
+
+}
+
+.issueControls > .delBtn {
+
+    border: 0px;
+    background-color: #c0392b;
+    color: white;
+
+}
+
+.fb-share-button {
+
+    display: inline-block
+
+}

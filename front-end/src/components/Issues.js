@@ -4,6 +4,7 @@ import {connect, useDispatch} from "react-redux"
 import {useHistory} from 'react-router-dom';
 import {getAllIssues} from '../actions/allIssuesAction'
 
+import './issue.css'
 
 const Issues = props => {
     // const [allIssues, setAllIssues] = useState([]);
@@ -46,21 +47,49 @@ const Issues = props => {
         })
     }
 
+    if (props.issues === undefined) {
+
+        return (
+
+            <h1>Waiting for data...</h1>
+
+        )
+
+    }
+
+  (function(d, s, id) { //Facebook code for implementing a share button
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 
     return (
-        <div>
+        <div id='issues-container'>
             <h1>Issues</h1>
+
+            <div class="fb-share-button" 
+                data-href="https://front-end-ten-omega.now.sh/" 
+                data-layout="button_count"
+                size="large">
+            </div>
+
             {props.issues.map(issue => {
                 return(
-                    <div key={issue.id}>
-                <p>{issue.title}</p>
-                <p>{issue.description}</p>
-                <p>{issue.upVotes}</p>
-                <button onClick={() => push(`/editIssues/${issue.id}`)}>Edit Issue</button>
-                <button onClick={() => deleteIssue(issue.id)}>Delete Issue</button>
-                <button onClick={() => upVote(issue)}>Up Vote</button>
+                    <div className='issue' key={issue.id}>
+
+                        <b><p>{issue.title}</p></b>
+                        <p>{issue.description}</p>
+                        <p>{issue.upVotes}</p>
+                        
+                        <div className='issueControls'>
+                            <button onClick={() => upVote(issue)}>Up Vote</button>
+                            <button onClick={() => push(`/editIssues/${issue.id}`)}>Edit Issue</button>
+                            <button className='delBtn' onClick={() => deleteIssue(issue.id)}>Delete Issue</button>
+                        </div>
                 
-                </div>
+                    </div>
                 
                 )
             })}

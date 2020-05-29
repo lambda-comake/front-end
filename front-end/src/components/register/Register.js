@@ -6,11 +6,11 @@ import {axiosWithAuth} from '../../utils/axiosWithAuth'
 import { connect } from "react-redux";
 import {registerAction} from '../../actions/registerAction';
 
-
-
 import * as yup from 'yup';
 
 import './register.css';
+
+import gsap from 'gsap';
 
 let Register = props => {
   const { push } = useHistory();
@@ -92,7 +92,9 @@ let Register = props => {
 
     event.preventDefault()
 
-        axiosWithAuth()
+    const afterAnimation = () => {
+
+      axiosWithAuth()
       .post("auth/register", formState)
       .then((res) => {
         // console.log({ res });
@@ -105,34 +107,20 @@ let Register = props => {
         
       });
 
+    }
+
+    gsap.to('#form-container', {duration: 1, opacity: 0, onComplete:afterAnimation});
+
 
     }
 
-    useEffect(() => {
-
-    //Input validation schema using Yup
-
-    const formSchema = yup.object().shape({
-
-        username: yup
-            .string()
-            .required("- Must include a username."),
-        password: yup
-            .string()
-            .min(2, "- Passwords must be at least 6 characters long.")
-            .required("- Password is Required"),
-      });
-
-      //Enables button if the input is valid
+    useEffect(() => { //Enables button if the input is valid
 
       formSchema.isValid(formState).then(valid => { 
 
         document.querySelector('form button').disabled = !valid;
 
-    })
-
-
-    },[formState])
+    })},[formState])
 
 
 return (
@@ -164,7 +152,7 @@ return (
 
             </form>
 
-            <Link to='/login'>Already have an account?</Link>
+            <Link to='/'>Already have an account?</Link>
 
         </div>
 
