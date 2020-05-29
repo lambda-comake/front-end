@@ -1,3 +1,18 @@
+#issues-container > h1 {
+
+    display: inline-block;
+    margin-right: 20px;
+
+}
+
+#issues-container .fb_iframe_widget {
+
+    position: absolute;
+    left: 100;
+    top: 97px;
+
+}
+
 .issue {
 
     width: 300px;
@@ -39,5 +54,11 @@
     border: 0px;
     background-color: #c0392b;
     color: white;
+
+}
+
+.fb-share-button {
+
+    display: inline-block
 
 }
